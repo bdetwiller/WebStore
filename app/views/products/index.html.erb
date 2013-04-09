@@ -1,0 +1,19 @@
+
+<h1> Welcome <%= @current_user.email %>! </h1>
+<h1> Available Products </h1>
+<%= form_for(@order, url: add_to_cart_orders_url) do |f| %>
+<ul>
+  <% Product.all.each do |product| %>
+    <li>
+    <%= check_box_tag("order[product_ids][]",
+      product.id,
+      @product_ids.include?(product.id),
+      id: "product_id_#{product.id}") %>
+      <%= label_tag("product_id_#{product.id}", product.name) %></li>
+  <% end %>
+  <input type="hidden" name="order[product_ids][]" >
+<input type="hidden" name="order[user_id]" value="<%= @current_user.id %>" >
+</ul>
+<%= f.submit("Add Products") %>
+<% end %>
+<%= link_to "Sign out", signout_url %>

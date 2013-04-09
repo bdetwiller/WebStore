@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Order Confirmation</h1>
+    <p>
+      You have successfully ordered from example.com,
+      your email is: <%= @user.email %>. Amazing, isn't it.'<br/>
+    </p>
+    <p>
+      You ordered the following items:
+      <ul>
+      <% @user.orders.last.products.each do |product| %>
+        <li><%= product.name %> - <%= product.price %></li>
+      <% end %>
+    </ul>
+    </p>
+    <p>Thanks for buying and have a great day!</p>
+  </body>
+</html>

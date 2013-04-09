@@ -1,0 +1,11 @@
+<h1>Hey <%= current_user.email%>, here is your order</h1>
+<ul>
+ <% @products.each do |product| %>
+ <li><%= product.name %>: $<%= product.price %></li>
+ <% end %>
+ <li>Total: $<%= @products.inject(0) { |total, value| total += value.price}%>
+</ul>
+
+<%= link_to "Change order", user_products_url(current_user) %>
+<%= button_to "Confirm order", orders_url %>
+
