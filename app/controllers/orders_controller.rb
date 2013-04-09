@@ -14,6 +14,8 @@ class OrdersController < ApplicationController
     @products = Product.find_all_by_id(cart)
   end
 
+  #REV: whenever you make a new method like this, consider if it is needed.
+  #Maybe it will be better to make a CartController and have a create or update method
   def add_to_cart
     if params[:order][:user_id].to_i == current_user.id
       cookies[:cart] = params[:order][:product_ids]

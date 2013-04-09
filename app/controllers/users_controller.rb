@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+
+  #REV: try to use the RESTFUL methods first before creating new methods in controllers
   def signin
     if cookies[:user_id].blank?
       @user = User.new
